@@ -12,5 +12,14 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/Abhilash3456/dotnetcode.git'
             }
         }
+        
+        
+        stage ('msbuild') {
+            steps {
+                sh 'dotnet restore src/NopCommerce.sln'
+                sh 'dotnet build --configuration Release src/NopCommerce.sln'
+                sh 'dotnet publish src/NopCommerce.sln'
+            }
+        }
     }
 }
