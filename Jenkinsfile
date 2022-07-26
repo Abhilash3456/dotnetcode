@@ -15,6 +15,7 @@ pipeline {
         stage ('msbuild') {
             steps {
                 bat 'echo %PATH%'
+                bat 'dotnet restore ConsoleApp.sln'
             }
         }
     }
