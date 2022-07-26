@@ -15,7 +15,7 @@ pipeline {
         stage ('msbuild') {
             steps {
                 bat 'echo %PATH%'
-                bat 'dotnet restore ConsoleApp.sln'
+                bat 'dotnet restore C:\Users\Administrator\AppData\Local\Jenkins\.jenkins\workspace\pipelinemsbuild\ConsoleApp\ConsoleApp.sln'
             }
         }
     }
