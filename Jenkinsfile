@@ -16,7 +16,7 @@ pipeline {
         
         stage ('msbuild') {
             steps {
-                sh 'dotnet restore C:\Users\Administrator\code file\dotnetcode\ConsoleApp\ConsoleApp.sln'
+                sh 'dotnet -h'
             }
         }
     }
