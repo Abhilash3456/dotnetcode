@@ -14,7 +14,7 @@ pipeline {
         }
         stage ('msbuild') {
             steps {
-                sh 'dotnet restore dotnetcode/ConsoleApp/ConsoleApp.sln'
+                sh 'pwd'
             }
         }
     }
