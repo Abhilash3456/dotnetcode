@@ -16,9 +16,7 @@ pipeline {
         
         stage ('msbuild') {
             steps {
-                bit 'dotnet restore src/NopCommerce.sln'
-                bit 'dotnet build --configuration Release src/NopCommerce.sln'
-                bit 'dotnet publish src/NopCommerce.sln'
+                sh 'dotnet restore C:\Users\Administrator\code file\dotnetcode\ConsoleApp\ConsoleApp.sln'
             }
         }
     }
