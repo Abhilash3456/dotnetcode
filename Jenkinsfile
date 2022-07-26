@@ -12,11 +12,9 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/Abhilash3456/dotnetcode.git'
             }
         }
-        
-        
         stage ('msbuild') {
             steps {
-                sh 'dotnet -h'
+                sh 'dotnet restore dotnetcode/ConsoleApp/ConsoleApp.sln'
             }
         }
     }
