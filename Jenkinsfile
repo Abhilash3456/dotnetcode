@@ -22,8 +22,7 @@ pipeline {
         }
         stage ('scan') {
             steps {
-                withSonarQubeEnv(installationName: 'sonarjenks')
-                  bat 'clean install sonar:sonar'
+                withSonarQubeEnv('sonarjenks')
             }
         }    
     }
