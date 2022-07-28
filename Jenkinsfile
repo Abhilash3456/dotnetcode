@@ -22,7 +22,7 @@ pipeline {
         }
         stage ('scan') {
             steps {
-                withSonarQubeEnv('sonarjenks')
+                withSonarQubeEnv(installationName: 'sonarjenks', credentialsId: 'sonarinjenks') 
             }
         }    
     }
