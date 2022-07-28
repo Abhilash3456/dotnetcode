@@ -23,7 +23,7 @@ pipeline {
         stage ('scan') {
             steps {
                 withSonarQubeEnv(installationName: 'sonarjenks', credentialsId: 'sonarinjenks') {
-                    bat "./gradlew sonarjenks"
+                    bat "clean install sonar:sonar"
                 }
             }
         }    
