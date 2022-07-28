@@ -22,7 +22,9 @@ pipeline {
         }
         stage ('scan') {
             steps {
-                withSonarQubeEnv(installationName: 'sonarjenks', credentialsId: 'sonarinjenks') 
+                withSonarQubeEnv(installationName: 'sonarjenks', credentialsId: 'sonarinjenks') {
+                    sh "./gradlew sonarjenks"
+                }
             }
         }    
     }
