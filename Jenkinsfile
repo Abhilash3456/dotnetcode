@@ -20,5 +20,9 @@ pipeline {
                 bat 'dotnet publish C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/pipelinemsbuild/ConsoleApp/ConsoleApp.sln'
             }
         }
+        stage ('scan') {
+            steps {
+                withSonarQubeEnv(installationName: 'sonarjenks')
+                  bat './mvnw clean sonar:sonar'
     }
 }
