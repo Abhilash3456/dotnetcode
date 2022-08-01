@@ -23,7 +23,7 @@ pipeline {
         stage ('scan') {
             steps {
                 withSonarQubeEnv(installationName: 'sonarjenks', credentialsId: 'sonarinjenks') {
-                    bat "clean install sonar:sonar"
+                    bat "mvn clean verify sonar:sonar -Dsonar.login=squ_4e51d28ef31aebabca2a3615ce3f62ed86a8bb35"
                 }
             }
         }    
