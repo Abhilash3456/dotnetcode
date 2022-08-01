@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        PATH = "$PATH:C:/Program Files/Maven/apache-maven-3.8.6/apache-maven-3.8.6/bin"
+    }
 
     stages {
         stage ('Clean workspace') {
@@ -22,8 +25,8 @@ pipeline {
         }
         stage ('scan') {
             steps {
-                withSonarQubeEnv(installationName: 'sonarjenks', credentialsId: 'sonarinjenks') {
-                    bat "mvn clean verify sonar:sonar -Dsonar.login=squ_4e51d28ef31aebabca2a3615ce3f62ed86a8bb35"
+                withSonarQubeEnv('sonarqube-9.5') {
+                    bat "mvn sonar:sonar"
                 }
             }
         }    
