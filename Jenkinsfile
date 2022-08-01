@@ -32,7 +32,7 @@ pipeline {
         stage ('scan') {
             steps {
                 withSonarQubeEnv('sonarqube-9.5') {
-                    bat "mvn sonar:sonar"
+                    bat "mvn clean install"
                 }
             }
         }    
