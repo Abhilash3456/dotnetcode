@@ -23,6 +23,12 @@ pipeline {
                 bat 'dotnet publish C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/pipelinemsbuild/ConsoleApp/ConsoleApp.sln'
             }
         }
+        stage ('check version') {
+            steps {
+                bat 'java -version'
+                bat 'mvn -version'
+            }
+        }
         stage ('scan') {
             steps {
                 withSonarQubeEnv('sonarqube-9.5') {
