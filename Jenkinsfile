@@ -27,9 +27,7 @@ pipeline {
             steps {
                 bat 'java -version'
                 bat 'mvn -version'
-                bat 'dotnet sonarscanner begin /k:"scanofdotnet" /d:sonar.host.url="http://35.90.138.131:9000"  /d:sonar.login="sqp_0e70ff613172f0d2ac73dacd6bcebec5f61b4894"'
                 bat 'dotnet build'
-                bat 'dotnet sonarscanner end /d:sonar.login="sqp_0e70ff613172f0d2ac73dacd6bcebec5f61b4894"'
             }
         }
         stage ('scan') {
