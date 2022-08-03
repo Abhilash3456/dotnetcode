@@ -30,9 +30,15 @@ pipeline {
                 bat 'mvn -version'
             }
         }
+        stage('Build + SonarQube analysis') {
+            def sqScannerMsBuildHome = tool 'scanmsbuild5.7'
+            withSonarQubeEnv('sonarqube-9.5') {
+                bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /k:squ_272c063edcf9b0f25527b54fbcec3ad044d70de0"
+            }
+        }
         stage ('scan') {
             steps {
-                withSonarQubeEnv(credentialsId: 'sonarinjenks', installationName: 'sonarqube-9.5') {
+                withSonarQubeEnv(credentialsId: 'sonartoken', installationName: 'sonarqube-9.5') {
                     bat 'dotnet C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/tools/hudson.plugins.sonar.MsBuildSQRunnerInstallation/scanmsbuild5.7/SonarScanner.MSBuild.dll begin /k:"firstscan" /d:sonar.host.url="http://35.90.138.131:9000"  /d:sonar.login="sqp_d8e2e5b82e4bb4e99e67b17b19d835b35fbb59ea"'
                 }
             }
