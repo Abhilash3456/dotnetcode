@@ -31,9 +31,11 @@ pipeline {
             }
         }
         stage('Build + SonarQube analysis') {
-            def sqScannerMsBuildHome = tool 'scanmsbuild5.7'
-            withSonarQubeEnv('sonarqube-9.5') {
-                bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /k:squ_272c063edcf9b0f25527b54fbcec3ad044d70de0"
+            steps {
+                def sqScannerMsBuildHome = tool 'scanmsbuild5.7'
+                withSonarQubeEnv('sonarqube-9.5') {
+                    bat "${sqScannerMsBuildHome}\\SonarQube.Scanner.MSBuild.exe begin /k:squ_272c063edcf9b0f25527b54fbcec3ad044d70de0"
+                }
             }
         }
         stage ('scan') {
