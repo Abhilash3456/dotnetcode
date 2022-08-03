@@ -1,6 +1,7 @@
 pipeline {
     agent any
     environment {
+        MSBUILD_SQ_SCANNER_HOME = tool name: 'scanmsbuild5.7', type: 'hudson.plugins.sonar.MsBuildSQRunnerInstallation'
         PATH = "$PATH:C:/Program Files/Maven/apache-maven-3.8.6/apache-maven-3.8.6/bin"
     }
 
@@ -27,13 +28,12 @@ pipeline {
             steps {
                 bat 'java -version'
                 bat 'mvn -version'
-                bat 'dotnet sonarscanner end /d:sonar.login="sqp_0e70ff613172f0d2ac73dacd6bcebec5f61b4894"'
             }
         }
         stage ('scan') {
             steps {
                 withSonarQubeEnv(credentialsId: 'sonarinjenks', installationName: 'sonarqube-9.5') {
-                    bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar'
+                    bat 'dotnet org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar'
                 }
             }
         }    
