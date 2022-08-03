@@ -33,7 +33,7 @@ pipeline {
         stage ('scan') {
             steps {
                 withSonarQubeEnv(credentialsId: 'sonarinjenks', installationName: 'sonarqube-9.5') {
-                    bat 'dotnet org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar'
+                    bat 'dotnet tool install --global dotnet-sonarscanner'
                 }
             }
         }    
