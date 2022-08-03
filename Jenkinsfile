@@ -44,7 +44,7 @@ pipeline {
         }
         stage ('scan') {
             steps {
-                withSonarQubeEnv(credentialsId: 'sonartoken', installationName: 'sonarqube-9.5') {
+                withSonarQubeEnv('sonarqube-9.5') {
                     bat 'dotnet C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/tools/hudson.plugins.sonar.MsBuildSQRunnerInstallation/scanmsbuild5.7/SonarScanner.MSBuild.dll begin /k:"firstscan" /d:sonar.host.url="http://35.90.138.131:9000"  /d:sonar.login="sqp_d8e2e5b82e4bb4e99e67b17b19d835b35fbb59ea"'
                 }
             }
