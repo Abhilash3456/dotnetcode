@@ -35,7 +35,7 @@ pipeline {
                 withSonarQubeEnv('sonarqube-9.5') {
                     bat 'dotnet C:/tools/sonarqube/SonarScanner.MSBuild.dll begin /k:"sonartoken" /d:sonar.host.url="http://35.90.138.131:9000" /d:sonar.login="squ_272c063edcf9b0f25527b54fbcec3ad044d70de0"'
                     bat 'dotnet build C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/pipelinemsbuild/ConsoleApp/ConsoleApp.sln'
-                    bat 'dotnet C:/tools/sonarqube/SonarScanner.MSBuild.dll begin end /d:sonar.login="squ_272c063edcf9b0f25527b54fbcec3ad044d70de0"'
+                    bat 'dotnet C:/tools/sonarqube/SonarScanner.MSBuild.dll end /d:sonar.login="squ_272c063edcf9b0f25527b54fbcec3ad044d70de0"'
                    // bat 'dotnet C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/tools/hudson.plugins.sonar.MsBuildSQRunnerInstallation/scanmsbuild5.7/SonarScanner.MSBuild.dll begin /k:"sonartoken" /d:sonar.login="squ_272c063edcf9b0f25527b54fbcec3ad044d70de0"'
                     //bat 'MSBuild.exe C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/pipelinemsbuild/ConsoleApp/ConsoleApp.sln /t:Rebuild'
                     //bat 'SonarScanner.MSBuild.exe end /d:sonar.login="squ_272c063edcf9b0f25527b54fbcec3ad044d70de0"'
