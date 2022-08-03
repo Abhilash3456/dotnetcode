@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Build + SonarQube analysis') {
             steps {
-                withSonarQubeEnv('scanmsbuild5.7') {
+                withSonarQubeEnv('sonarqube-9.5') {
                     bat 'SonarScanner.MSBuild.exe begin /k:"sonartoken" /d:sonar.login="squ_272c063edcf9b0f25527b54fbcec3ad044d70de0"'
                     bat 'MSBuild.exe C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/pipelinemsbuild/ConsoleApp/ConsoleApp.sln /t:Rebuild'
                     bat 'SonarScanner.MSBuild.exe end /d:sonar.login="squ_272c063edcf9b0f25527b54fbcec3ad044d70de0"'
