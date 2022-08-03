@@ -33,7 +33,7 @@ pipeline {
         stage ('scan') {
             steps {
                 withSonarQubeEnv(credentialsId: 'sonarinjenks', installationName: 'sonarqube-9.5') {
-                    bat 'dotnet tool install --global dotnet-sonarscanner'
+                    bat 'dotnet sonarscanner begin /k:"firstscan" /d:sonar.host.url="http://35.90.138.131:9000"  /d:sonar.login="sqp_d8e2e5b82e4bb4e99e67b17b19d835b35fbb59ea"'
                 }
             }
         }    
