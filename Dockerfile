@@ -4,6 +4,8 @@ WORKDIR /app
 # Copy everything
 COPY . ./
 # Restore as distinct layers
+RUN echo %cd%
+RUN cd ConsoleApp
 RUN dotnet restore ConsoleApp.sln
 # Build and publish a release
 # RUN dotnet publish -c Release -o out
