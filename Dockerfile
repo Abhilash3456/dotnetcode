@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
-WORKDIR /ConsoleApp
-COPY ConsoleApp.sln .
+#WORKDIR /ConsoleApp
+COPY *.sln /dotnetfile/task/solution.sln
 COPY ConsoleApp/*.csproj ./ConsoleApp/
 # Restore as distinct layers
 RUN echo %cd%
