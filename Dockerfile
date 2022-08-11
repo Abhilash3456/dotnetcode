@@ -16,6 +16,9 @@
 #ENTRYPOINT ["dotnet", "ConsoleApp.dll"]
 #ENTRYPOINT ["dotnet", "UnitTestProject.dll"]
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
-WORKDIR /app
-COPY published/ ./
-ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+#WORKDIR /app
+#COPY published/ ./
+#ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+RUN dotnet restore C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/sample/ConsoleApp/ConsoleApp.sln
+RUN dotnet build --configuration Release C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/sample/ConsoleApp/ConsoleApp.sln
+RUN dotnet publish C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/sample/ConsoleApp/ConsoleApp.sln
