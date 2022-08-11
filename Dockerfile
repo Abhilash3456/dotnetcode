@@ -15,10 +15,21 @@
 #COPY --from=build-env /app/out .
 #ENTRYPOINT ["dotnet", "ConsoleApp.dll"]
 #ENTRYPOINT ["dotnet", "UnitTestProject.dll"]
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
+#FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
 #WORKDIR /app
 #COPY published/ ./
 #ENTRYPOINT ["dotnet", "aspnetapp.dll"]
-RUN dotnet restore C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/sample/ConsoleApp/ConsoleApp.sln
-RUN dotnet build --configuration Release C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/sample/ConsoleApp/ConsoleApp.sln
-RUN dotnet publish C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/sample/ConsoleApp/ConsoleApp.sln
+#RUN dotnet restore C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/sample/ConsoleApp/ConsoleApp.sln
+#RUN dotnet build --configuration Release C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/sample/ConsoleApp/ConsoleApp.sln
+#RUN dotnet publish C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/sample/ConsoleApp/ConsoleApp.sln
+# Stage 1
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+WORKDIR /build
+COPY . .
+RUN dotnet restore
+RUN dotnet publish -c Release -o /app
+# Stage 2
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS final
+WORKDIR /app
+COPY --from=build /app .
+ENTRYPOINT ["dotnet", "ConsoleApp.dll"]
