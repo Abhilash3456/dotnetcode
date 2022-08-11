@@ -1,6 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 WORKDIR C:/Users/Administrator/code/dotnetcode/ConsoleApp
-
+COPY *.csproj .
+RUN dotnet restore
 # Copy everything
 COPY . ./
 # Restore as distinct layers
