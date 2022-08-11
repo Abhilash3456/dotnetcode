@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
-COPY *.sln .
+COPY *.sln ./ConsoleApp/
 COPY ConsoleApp/*.csproj ./ConsoleApp/
 RUN dotnet restore
 
