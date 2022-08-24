@@ -34,7 +34,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarqube-9.5') {
                     bat 'dotnet C:/tools/sonarqube/SonarScanner.MSBuild.dll begin /k:"sonartoken" /d:sonar.host.url="http://34.228.42.26:9000/" /d:sonar.login="squ_38045fbc7a70ea77e147d8f2162897542765a95f"'
-                    bat 'dotnet build C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/pipelinecodescan/ConsoleApp/ConsoleApp.sln'
+                    bat 'dotnet build C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/dotnetcodepipeline/ConsoleApp/ConsoleApp.sln'
                     bat 'dotnet C:/tools/sonarqube/SonarScanner.MSBuild.dll end /d:sonar.login="squ_38045fbc7a70ea77e147d8f2162897542765a95f"'
                    // bat 'dotnet C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/tools/hudson.plugins.sonar.MsBuildSQRunnerInstallation/scanmsbuild5.7/SonarScanner.MSBuild.dll begin /k:"sonartoken" /d:sonar.login="squ_272c063edcf9b0f25527b54fbcec3ad044d70de0"'
                     //bat 'MSBuild.exe C:/Users/Administrator/AppData/Local/Jenkins/.jenkins/workspace/pipelinemsbuild/ConsoleApp/ConsoleApp.sln /t:Rebuild'
