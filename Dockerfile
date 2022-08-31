@@ -4,7 +4,7 @@ WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY /ConsoleApp/*.sln ./ConsoleApp/app.sln
-COPY dotnetcode/ConsoleApp/ConsoleApp.csproj ./ConsoleApp/
+COPY dotnetcode/ConsoleApp/ConsoleApp.csproj ./ConsoleApp/ConsoleApp.csproj
 COPY ConsoleApp/UnitTestProject/ConsoleApp.csproj ./UnitTestProject/
 
 RUN dotnet restore
