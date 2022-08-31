@@ -27,7 +27,7 @@ pipeline {
         stage ('check version') {
             steps {
                 bat 'java -version'
-                bat 'docker build Dockerfile'
+                bat 'docker build dotnetcode/ConsoleApp'
 //                bat 'mvn -version'
             }
         }
